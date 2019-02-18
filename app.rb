@@ -7,11 +7,12 @@ get "/" do
 end
 
 post "/" do
-  @status = start_game
   redirect "/game"
 end
 
 get "/game" do
+  game = Game.new
+  @status = game.start_game
   erb :game, layout: :main
 end
 
