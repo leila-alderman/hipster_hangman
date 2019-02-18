@@ -11,8 +11,7 @@
   Incorrect guesses: <br/>
   <%= @status[:incorrect_guesses].join(", ") %>
 </p>
-
-<form action="/game">
+<form action="/game" method="post">
   <label for="guess">Guess a letter or attempt to guess the word: </label><br/>
   <input type="text" name="guess" id="guess" placeholder="Enter your guess here.">
   <input type="submit" value="Guess">
