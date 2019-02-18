@@ -1,0 +1,27 @@
+body {
+  display: block;
+  margin: 0 auto;  
+}
+
+body::after {
+  content: "";
+  background-image: url("background.jpg");
+  background-size: cover;
+  opacity: 0.5;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  position: absolute;
+  z-index: -1;   
+}
+
+h1 {
+  display: block;
+  margin: 0 auto;
+  font-family: 'Amatic SC', cursive;
+  text-align: center;
+  color: black;
+  opacity: 1;
+  font-size: 90px;
+}
