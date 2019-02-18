@@ -8,7 +8,7 @@ body::after {
   background-image: url("background.jpg");
   background-size: cover;
   opacity: 0.5;
-  top: 0;
+  top: -45px;
   left: 0;
   bottom: 0;
   right: 0;
@@ -24,4 +24,11 @@ h1 {
   color: black;
   opacity: 1;
   font-size: 90px;
+}
+
+footer {
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: lightslategray;
 }

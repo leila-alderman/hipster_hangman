@@ -2,7 +2,6 @@ class Game
     
   # Overall game structure
   def play
-    puts "Welcome to Hipster Hangman!"
     status = start_game
     show_board(status)
     playing = true
@@ -50,8 +49,10 @@ class Game
   def start_game
     dictionary = File.readlines("hipster-dictionary.txt")
     secret_word = get_word(dictionary).split("")
-    word = secret_word.map { |x| x = "_" }
-    game_status = {
+    word = secret_word.map do |x| 
+      x == "-" ? x = "-" : x = "_"
+    end
+    {
       secret_word: secret_word,
       word: word,
       incorrect_guesses: [],
