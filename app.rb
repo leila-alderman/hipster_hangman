@@ -48,7 +48,11 @@ def start_game
     secret_word: secret_word,
     word: word,
     incorrect_guesses: [],
-    images: [1, 2, 3, 4, 5, 6, 7]
+    images: ["Full Hipster.svg",
+      "Hipster 4.svg", 
+      "Hipster 3.svg", 
+      "Hipster 2.svg", 
+      "Hipster 1.svg"]
   }
 end
 
@@ -86,7 +90,7 @@ end
 def game_over?
   if @status[:secret_word] == @status[:word]
     redirect "/win"
-  elsif @status[:incorrect_guesses].length >= 6
+  elsif @status[:incorrect_guesses].length >= 5
     redirect "/lose"
   else
     redirect "/game"

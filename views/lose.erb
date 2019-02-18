@@ -1,7 +1,9 @@
-<h2>You are so basic.</h2>
-<h2>You've probably never even heard of <strong><%= @status[:secret_word].join("") %></strong>.</h2>
+<div class="game">
+  <h2>You are so basic.</h2>
+  <h2>You've probably never even heard of <strong><%= @status[:secret_word].join("") %></strong>.</h2>
 
 
-<form method="post" action="/">
-  <input type="submit" name="submit" value="Play again">
-</form>
+  <form method="post" action="/">
+    <input type="submit" name="submit" value="Play again">
+  </form>
+</div>
