@@ -7,10 +7,6 @@ get "/" do
   erb :index, layout: :main
 end
 
-post "/" do
-  redirect "/game"
-end
-
 get "/game" do
   session["status"] ||= start_game
   @status = session["status"]
@@ -73,7 +69,7 @@ def round(status, guess)
     if guess == @status[:secret_word]
       redirect "/win"
     else
-      session[:message] = "Sorry, that's not the right word. Keep guessing."
+      session[:message] = "Sorry not sorry. That's not the right word. Keep guessing."
     end
   else
     if status[:secret_word].include?(guess)
