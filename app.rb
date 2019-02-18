@@ -14,6 +14,7 @@ end
 get "/game" do
   session["status"] ||= start_game
   @status = session["status"]
+  @message = session.delete(:message)
   erb :game, layout: :main
 end
 
@@ -21,7 +22,17 @@ post "/game" do
   @status = session["status"]
   @guess = params["guess"]
   session["status"] = round(@status, @guess)
-  redirect "/game"
+  game_over?
+end
+
+get "/win" do
+  @status = session.delete("status")
+  erb :win, layout: :main
+end
+
+get "/lose" do
+  @status = session.delete("status")
+  erb :lose, layout: :main
 end
 
 
@@ -52,36 +63,13 @@ def get_word(dictionary)
   end
 end
 
-# Overall game structure
-def play
-  status = start_game
-  show_board(status)
-  playing = true
-  while playing == true
-    status = round(status)
-    if status == false
-      playing = false
-      return
-    end
-    if status[:secret_word] == status[:word]
-      puts "Congratulations! You win!"
-      playing = false
-    elsif status[:incorrect_guesses].length >= 6
-      puts "Sorry, you lost. The secret word was '#{status[:secret_word].join("")}'."
-      playing = false
-    end
-  end
-end
-
 # Play a round of hangman
 def round(status, guess)
-
   if guess.length > 1
     if guess == @status[:secret_word]
-      puts "Congratulations! You win!"
+      redirect "/win"
     else
-      puts "Sorry, that's not the secret word."
-      round(game_status)
+      session[:message] = "Sorry, that's not the right word. Keep guessing."
     end
   else
     if status[:secret_word].include?(guess)
@@ -93,4 +81,14 @@ def round(status, guess)
     end
   end
   return status
+end
+
+def game_over?
+  if @status[:secret_word] == @status[:word]
+    redirect "/win"
+  elsif @status[:incorrect_guesses].length >= 6
+    redirect "/lose"
+  else
+    redirect "/game"
+  end
 end

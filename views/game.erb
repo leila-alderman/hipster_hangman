@@ -2,6 +2,10 @@
 
 <h3> <%= @status[:word].join(" ") %> </h3>
 
+<% if @message %>
+<p> <%= @message %> </p>
+<% end %>
+
 <p> 
   <% num_wrong = @status[:incorrect_guesses].length %> 
   <%= "You have #{6-num_wrong} more incorrect guesses." %>
