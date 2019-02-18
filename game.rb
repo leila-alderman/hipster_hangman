@@ -2,7 +2,7 @@ class Game
     
   # Overall game structure
   def play
-    puts "Welcome to Hangman!"
+    puts "Welcome to Hipster Hangman!"
     status = start_game
     show_board(status)
     playing = true
@@ -48,7 +48,7 @@ class Game
 
   # Initialize the game status parameters.
   def start_game
-    dictionary = File.readlines("dictionary.txt")
+    dictionary = File.readlines("hipster-dictionary.txt")
     secret_word = get_word(dictionary).split("")
     word = secret_word.map { |x| x = "_" }
     game_status = {
