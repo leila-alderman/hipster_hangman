@@ -9,14 +9,14 @@
 <p> <%= @message %> </p>
 <% end %>
 
-
-<% def pluralize(number, text) %>
-  <% return "#{text}es" if number != 1 %>
-  <% text %>
+<% if 5-num_wrong > 1 %>
+  <% guess = "guesses" %>
+<% else %>
+    <% guess = "guess" %>
 <% end %>
 
 <p> 
-  <%= "You have #{5-num_wrong} more incorrect #{pluralize(5-num_wrong, "guess")}." %>
+  <%= "You have #{5-num_wrong} more incorrect #{guess)}." %>
 </p>
 
 <p>
