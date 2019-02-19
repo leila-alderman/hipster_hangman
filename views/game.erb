@@ -10,13 +10,13 @@
 <% end %>
 
 <% if 5-num_wrong > 1 %>
-  <% guess = "guesses" %>
+  <% guess_es = "guesses" %>
 <% else %>
-    <% guess = "guess" %>
+  <% guess_es = "guess" %>
 <% end %>
 
 <p> 
-  <%= "You have #{5-num_wrong} more incorrect #{guess)}." %>
+  <%= "You have #{5-num_wrong} more incorrect #{guess_es)}." %>
 </p>
 
 <p>
