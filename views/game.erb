@@ -10,8 +10,13 @@
 <% end %>
 
 
+<% def pluralize(number, text) %>
+  <% return "#{text}es" if number != 1 %>
+  <% text %>
+<% end %>
+
 <p> 
-  <%= "You have #{5-num_wrong} more incorrect guesses." %>
+  <%= "You have #{5-num_wrong} more incorrect #{pluralize(5-num_wrong, "guess")}." %>
 </p>
 
 <p>
